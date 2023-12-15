@@ -1,36 +1,27 @@
 import React, { useState } from "react";
-import SideBar from "@/components/SideBar/SideBar";
-import styles from "./Note.module.scss";
-import prisma from "@/lib/prisma";
-import Button from "@/components/Button/Button";
+import styles from "./page.module.scss";
+import { getNote } from "@/lib/notes";
+import Note from "@/components/Note/Note";
+import EditNote from "@/components/EditNote/EditNote";
 
 export default async function NotesPage({
   params,
 }: {
-  readonly params: { readonly userName: string };
+  readonly params: { readonly noteId: string };
 }) {
-  const note = await prisma.note.findUnique({
-    where: {
-      id: Number(params.userName),
-    },
-  });
+  const note = await getNote(params.noteId);
+
+  const options: Intl.DateTimeFormatOptions = {
+    day: "2-digit",
+    month: "2-digit",
+    year: "numeric",
+  };
 
   return (
-    <div className={styles.container}>
-      <div className={styles.notesContainer}>
-        <div className={styles.header}>
-          <div className={styles.titleSection}>
-            <h1> Title</h1>
-            <p className={styles.date}> Date</p>
-          </div>
-          <Button size="md" backgroundColor="blue">
-            Edit
-          </Button>
-        </div>
-        <div className={styles.content}>
-          <p className={styles.text}> Content sEE YOUU SMILEEE smileee</p>
-        </div>
-      </div>
-    </div>
+    // <div className={styles.container}>
+    //   <Note {...note} />
+    // </div>
+
+    <EditNote {...note} noteId={params.noteId} />
   );
 }
