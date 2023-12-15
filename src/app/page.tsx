@@ -1,4 +1,3 @@
-import SideBar from "@/components/SideBar/SideBar";
 import styles from "./page.module.scss";
 export default function Home() {
   return (
