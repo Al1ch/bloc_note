@@ -30,19 +30,14 @@ const EditNote = ({ title, content, createdAt, noteId }: Props) => {
     }
   };
 
-  const handdleChangePost = async (data: FormData) => {
-    const content = data.get("content")?.toString();
-    const titleContent = data.get("titleContent")?.toString();
-    console.log("content", content);
-    await updateNote(noteId, titleContent, content);
-  };
-
   return (
     <div className={styles.editPageContainer}>
       <form
         ref={formRef}
         className={styles.container}
-        action={handdleChangePost}
+        onSubmit={(e) => {
+          e.preventDefault();
+        }}
       >
         <input
           type="text"
@@ -60,9 +55,10 @@ const EditNote = ({ title, content, createdAt, noteId }: Props) => {
           onChange={(e) => setContent(e.target.value)}
           name="content"
         />
-        <EditButton />
       </form>
       <div className={styles.previewContainer}>
+        <EditButton title={titleState} content={contentState} noteId={noteId} />
+
         <div className={styles.notePreview}></div>
       </div>
     </div>
