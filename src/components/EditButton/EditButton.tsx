@@ -2,6 +2,7 @@ import React from "react";
 import styles from "./EditButton.module.scss";
 import Button from "@/components/Buttons/Button/Button";
 import { updateNote } from "@/app/_action";
+import Tick from "@/assets/vectors/tick.svg";
 
 type Props = {
   title?: string;
@@ -11,20 +12,23 @@ type Props = {
 
 const EditButton = ({ title, content, noteId }: Props) => {
   const handleSavePost = async () => {
-    console.log("CCC");
-    console.log("content", content);
     await updateNote(noteId, title, content);
   };
 
   return (
-    <Button
-      backgroundColor="blue"
-      size="md"
-      type="submit"
-      onClick={() => handleSavePost()}
-    >
-      Edit
-    </Button>
+    <span className={styles.button}>
+      <Button
+        backgroundColor="blue"
+        size="md"
+        type="submit"
+        borderRadius="circle"
+        onClick={() => handleSavePost()}
+      >
+        <span className={styles.buttonContent}>
+          <Tick className={styles.vector} /> DONE
+        </span>
+      </Button>
+    </span>
   );
 };
 
