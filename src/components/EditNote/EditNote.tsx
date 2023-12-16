@@ -3,6 +3,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from "./EditNote.module.scss";
 import { updateNote } from "@/app/_action";
 import EditButton from "../EditButton/EditButton";
+import Button from "../Buttons/Button/Button";
 
 type Props = {
   title?: string;
@@ -18,17 +19,17 @@ const EditNote = ({ title, content, createdAt, noteId }: Props) => {
 
   const textAreaRef = useRef<HTMLTextAreaElement>(null);
 
-  useEffect(() => {
-    adjustTextAreaHeight();
-  }, [textAreaRef]);
+  // useEffect(() => {
+  //   adjustTextAreaHeight();
+  // }, [textAreaRef]);
 
-  const adjustTextAreaHeight = () => {
-    const textArea = textAreaRef.current;
-    if (textArea) {
-      textArea.style.height = "auto"; // Réinitialise la hauteur à la valeur par défaut pour recalculer la hauteur réelle.
-      textArea.style.height = textArea.scrollHeight + "px"; // Ajuste la hauteur en fonction du contenu réel.
-    }
-  };
+  // const adjustTextAreaHeight = () => {
+  //   const textArea = textAreaRef.current;
+  //   if (textArea) {
+  //     textArea.style.height = "auto"; // Réinitialise la hauteur à la valeur par défaut pour recalculer la hauteur réelle.
+  //     textArea.style.height = textArea.scrollHeight + "px"; // Ajuste la hauteur en fonction du contenu réel.
+  //   }
+  // };
 
   return (
     <div className={styles.editPageContainer}>
@@ -58,8 +59,20 @@ const EditNote = ({ title, content, createdAt, noteId }: Props) => {
       </form>
       <div className={styles.previewContainer}>
         <EditButton title={titleState} content={contentState} noteId={noteId} />
-
-        <div className={styles.notePreview}></div>
+        <div className={styles.notePreview}>
+          <Button
+            backgroundColor="lightBlue"
+            size="md"
+            type="submit"
+            borderRadius="circle"
+          >
+            <span className={styles.buttonText}>PREVIEW</span>
+          </Button>
+          <div className={styles.notePreviewContent}>
+            <h1>{titleState}</h1>
+            <p>{contentState}</p>
+          </div>
+        </div>
       </div>
     </div>
   );
