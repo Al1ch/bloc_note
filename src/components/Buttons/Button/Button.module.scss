@@ -5,7 +5,6 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    border-radius: 8px;
     border: none;
     cursor: pointer;
     color: white;
@@ -17,7 +16,9 @@
 
     }
     &.md{
-        padding: 12px;
+        padding: 8px;
+        width: 100%;
+        max-width: 100px;
         min-width: 100px;
     }
     &.lg{
@@ -26,11 +27,14 @@
 
     }
     &.blue{
-        background-color: #1e90ff;
+        background-color: #1a83ce;
         &:hover{
-            background-color: hsl(210, 100%, 50%);
+            background-color: #3b7fae;
 
         }
+    }
+    &.lightBlue{
+        background-color: #eaf7fe;
     }
     &.gray{
         background-color: rgb(229, 229, 247);
@@ -56,6 +60,13 @@
     }
     &.disabled{
         pointer-events: none;
+    }
+    &.rounded{
+        border-radius: 8px;
+    }
+    &.circle{
+        border-radius: 32px;
+        min-width: 100px;
     }
 
 

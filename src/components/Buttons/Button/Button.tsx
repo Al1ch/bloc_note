@@ -6,13 +6,15 @@ import cn from "classnames";
 type Props = ComponentPropsWithoutRef<"button"> & {
   children: React.ReactNode;
   size?: "sm" | "md" | "lg";
-  backgroundColor?: "blue" | "white" | "red" | "gray";
+  backgroundColor?: "blue" | "white" | "red" | "gray" | "lightBlue";
+  borderRadius?: "rounded" | "circle";
 };
 
 const Button = ({
   children,
   size = "md",
   backgroundColor,
+  borderRadius = "rounded",
   disabled = false,
   ...props
 }: Props) => {
@@ -23,6 +25,7 @@ const Button = ({
         styles.container,
         size && styles[size],
         backgroundColor && styles[backgroundColor],
+        borderRadius && styles[borderRadius],
         { [styles.disabled]: disabled }
       )}
       {...props}
