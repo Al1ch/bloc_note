@@ -2,6 +2,7 @@ import React from "react";
 import prisma from "@/lib/prisma";
 import Button from "@/components/Buttons/Button/Button";
 import styles from "./Note.module.scss";
+import EditButton from "@/components/Buttons/Button/EditButton/EditButton";
 
 type Props = {
   title?: string;
@@ -25,9 +26,7 @@ const Note = ({ title, content, createdAt }: Props) => {
             {createdAt?.toLocaleDateString("en-GB", options)}{" "}
           </p>
         </div>
-        <Button size="md" backgroundColor="blue">
-          Edit
-        </Button>
+        <EditButton />
       </div>
       <div className={styles.content}>
         <p className={styles.text}> {content}</p>

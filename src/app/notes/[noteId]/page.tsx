@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import styles from "./page.module.scss";
 import { getNote } from "@/lib/notes";
 import Note from "@/components/Note/Note";
@@ -6,10 +6,16 @@ import EditNote from "@/components/EditNote/EditNote";
 
 export default async function NotesPage({
   params,
+  searchParams,
 }: {
-  readonly params: { readonly noteId: string };
+  readonly params: {
+    readonly noteId: string | string | string[] | undefined;
+  };
+  searchParams: {
+    [key: string]: string | string[] | undefined;
+  };
 }) {
-  const note = await getNote(params.noteId);
+  const note = await getNote(params.noteId as string);
 
   const options: Intl.DateTimeFormatOptions = {
     day: "2-digit",
@@ -18,10 +24,14 @@ export default async function NotesPage({
   };
 
   return (
-    // <div className={styles.container}>
-    //   <Note {...note} />
-    // </div>
-
-    <EditNote {...note} noteId={params.noteId} />
+    <>
+      {searchParams.isEditing === "true" ? (
+        <EditNote {...note} noteId={params.noteId as string}></EditNote>
+      ) : (
+        <div className={styles.container}>
+          <Note {...note} />
+        </div>
+      )}
+    </>
   );
 }

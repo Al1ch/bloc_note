@@ -10,7 +10,6 @@ type Props = {
 };
 
 const NoteCard = ({ title, date, key, id }: Props) => {
-  console.log("ID ", id);
   return (
     <Link href={`/notes/${id}`} className={styles.link}>
       <div className={styles.container}>

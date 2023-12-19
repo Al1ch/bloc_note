@@ -2,7 +2,7 @@
 import React, { useState, useRef, useEffect } from "react";
 import styles from "./EditNote.module.scss";
 import { updateNote } from "@/app/_action";
-import EditButton from "../EditButton/EditButton";
+import SaveEditButton from "@/components/Buttons/Button/SaveEditButton/SaveEditButton";
 import Button from "../Buttons/Button/Button";
 
 type Props = {
@@ -58,7 +58,11 @@ const EditNote = ({ title, content, createdAt, noteId }: Props) => {
         />
       </form>
       <div className={styles.previewContainer}>
-        <EditButton title={titleState} content={contentState} noteId={noteId} />
+        <SaveEditButton
+          title={titleState}
+          content={contentState}
+          noteId={noteId}
+        />
         <div className={styles.notePreview}>
           <Button
             backgroundColor="lightBlue"
