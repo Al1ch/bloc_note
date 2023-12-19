@@ -1,8 +1,10 @@
+"use client";
 import React from "react";
-import styles from "./EditButton.module.scss";
+import styles from "./SaveEditButton.module.scss";
 import Button from "@/components/Buttons/Button/Button";
 import { updateNote } from "@/app/_action";
 import Tick from "@/assets/vectors/tick.svg";
+import { useRouter } from "next/navigation";
 
 type Props = {
   title?: string;
@@ -10,9 +12,12 @@ type Props = {
   noteId?: string;
 };
 
-const EditButton = ({ title, content, noteId }: Props) => {
+const SaveEditButton = ({ title, content, noteId }: Props) => {
+  const router = useRouter();
+
   const handleSavePost = async () => {
     await updateNote(noteId, title, content);
+    router.replace(`/notes/${noteId}`);
   };
 
   return (
@@ -32,4 +37,4 @@ const EditButton = ({ title, content, noteId }: Props) => {
   );
 };
 
-export default EditButton;
+export default SaveEditButton;
