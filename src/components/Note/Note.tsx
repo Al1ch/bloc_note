@@ -3,6 +3,7 @@ import prisma from "@/lib/prisma";
 import Button from "@/components/Buttons/Button/Button";
 import styles from "./Note.module.scss";
 import EditButton from "@/components/Buttons/Button/EditButton/EditButton";
+import NoteWithMarkdown from "../NoteWithMarkdown/NoteWithMarkdown";
 
 type Props = {
   title?: string;
@@ -29,7 +30,7 @@ const Note = ({ title, content, createdAt }: Props) => {
         <EditButton />
       </div>
       <div className={styles.content}>
-        <p className={styles.text}> {content}</p>
+        <NoteWithMarkdown text={content as string} />
       </div>
     </div>
   );
