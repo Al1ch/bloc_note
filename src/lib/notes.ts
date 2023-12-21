@@ -18,7 +18,11 @@ export const getNote = async (noteId : string) => {
 
 export const getNotes = async () => {
     try{
-        const notes = await prisma.note.findMany();
+        const notes = await prisma.note.findMany({
+            orderBy:{
+                id: 'desc',
+            }
+        });
         return notes;
     }
     catch(err){
@@ -37,6 +41,23 @@ export const updateNoteTable = async (noteId?: string, title? : string, content?
                 content: content,
             }
         });
+    }
+    catch(err){
+        console.log(err);
+    }
+}
+
+export const addNote = async(title: string, content : string) => {
+    try{
+        const note = await prisma.note.create({
+            data: {
+                title: title,
+                content: content,
+            }
+        });
+
+        return note;
+        
     }
     catch(err){
         console.log(err);
