@@ -4,12 +4,7 @@ import Button from "../Button";
 import AddIcon from "@/assets/vectors/add.svg";
 import { useRouter } from "next/navigation";
 
-type Props = {
-  title: string;
-  content: string;
-};
-
-const AddNoteButton = ({ title, content }: Props) => {
+const AddNoteButton = () => {
   const router = useRouter();
 
   const handleClick = async () => {
