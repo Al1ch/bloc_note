@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "./SideBar.module.scss";
 import NoteCard from "../NoteCard/NoteCard";
 import { getNotes } from "@/lib/notes";
