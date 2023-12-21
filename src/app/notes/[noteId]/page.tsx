@@ -2,7 +2,8 @@ import React from "react";
 import styles from "./page.module.scss";
 import { getNote } from "@/lib/notes";
 import Note from "@/components/Note/Note";
-import EditNote from "@/components/EditNote/EditNote";
+import EditNote from "@/components/NoteForm/NoteForm";
+import NoteForm from "@/components/NoteForm/NoteForm";
 
 export default async function NotesPage({
   params,
@@ -26,7 +27,11 @@ export default async function NotesPage({
   return (
     <>
       {searchParams.isEditing === "true" ? (
-        <EditNote {...note} noteId={params.noteId as string}></EditNote>
+        <NoteForm
+          {...note}
+          noteId={params.noteId as string}
+          type="edit"
+        ></NoteForm>
       ) : (
         <div className={styles.container}>
           <Note {...note} />
