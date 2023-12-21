@@ -30,7 +30,7 @@ const SaveEditButton = ({ title, content, noteId }: Props) => {
         onClick={() => handleSavePost()}
       >
         <span className={styles.buttonContent}>
-          <Tick className={styles.vector} /> DONE
+          <Tick className={styles.vector} /> Done
         </span>
       </Button>
     </span>
