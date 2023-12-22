@@ -19,6 +19,7 @@ const SideBar = async () => {
         {notes?.map((note) => (
           <NoteCard
             key={note.id}
+            content={note.content}
             id={note.id}
             title={note.title}
             date={note.createdAt.toLocaleDateString("en-GB", options)}

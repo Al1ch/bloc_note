@@ -33,7 +33,6 @@ const NoteForm = ({ title, content, createdAt, noteId, type }: Props) => {
   //     textArea.style.height = textArea.scrollHeight + "px"; // Ajuste la hauteur en fonction du contenu réel.
   //   }
   // };
-  const phrase = titleState && titleState + "\n" + contentState;
 
   return (
     <div className={styles.editPageContainer}>
@@ -85,7 +84,8 @@ const NoteForm = ({ title, content, createdAt, noteId, type }: Props) => {
             <span className={styles.buttonText}>PREVIEW</span>
           </Button>
           <div className={styles.notePreviewContent}>
-            <NoteWithMarkdown text={phrase as string} />
+            <h2 className={styles.title}>{titleState}</h2>
+            <NoteWithMarkdown text={contentState as string} />
           </div>
         </div>
       </div>

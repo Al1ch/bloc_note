@@ -21,17 +21,15 @@ type Props = {
 
 const NoteWithMarkdown = ({ text }: Props) => {
   return (
-    text && (
-      <div
-        className="text-with-markdown"
-        dangerouslySetInnerHTML={{
-          __html: sanitizeHtml(marked(text) as string, {
-            allowedTags,
-            allowedAttributes,
-          }),
-        }}
-      />
-    )
+    <div
+      className="text-with-markdown"
+      dangerouslySetInnerHTML={{
+        __html: sanitizeHtml(marked(text) as string, {
+          allowedTags,
+          allowedAttributes,
+        }),
+      }}
+    />
   );
 };
 
